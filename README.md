@@ -1,1 +1,1 @@
-https://junhchen778.githu.io/main.github.io
+https://junhchen778.github.io/main.github.io
