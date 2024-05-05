@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DNA Portfolio</title>
+  <!-- Link Swiper's CSS -->
+  <link rel="stylesheet" href="swipter.css" />
+
+  <!-- link file css -->
+  <link rel="stylesheet" href="portfolio_corporate.css">
+</head>
+
+<body>
+
+  <div class="intro">
+    <video autoplay muted playsinline id="intro_DNA">
+      <source src="assets/Intro_DNA.mp4" type="video/mp4">
+    </video>
+  </div>
+
+  <img src="assets/DNA Corporate.png" id="dna_logo">
+
+  <!-- Swiper -->
+  <div class="swiper mySwiper">
+    <div class="swiper-wrapper">
+      <div class="swiper-slide">
+        <div class="image-container">
+          <img src="assets/slider_placeholder/1.jpg" alt="" data-video="assets/slider_placeholder/placeholder1.mp4">
+          <p>check out this awesome video</p>
+        </div>
+      </div>
+      <div class="swiper-slide">
+        <div class="image-container">
+          <img src="assets/slider_placeholder/2.jpg" alt="" data-video="assets/slider_placeholder/placeholder2.mp4">
+          <p>check out this awesome video</p>
+        </div>
+      </div>
+      <div class="swiper-slide">
+        <div class="image-container">
+          <img src="assets/slider_placeholder/3.jpg" alt="" data-video="assets/slider_placeholder/placeholder3.mp4">
+          <p>check out this awesome video</p>
+        </div>
+      </div>
+      <div class="swiper-slide">
+        <div class="image-container">
+          <img src="assets/slider_placeholder/4.jpg" alt="" data-video="assets/slider_placeholder/placeholder4.mp4">
+          <p>check out this awesome video</p>
+        </div>
+      </div>
+      <div class="swiper-slide">
+        <div class="image-container">
+          <img src="assets/slider_placeholder/5.jpg" alt="" data-video="assets/slider_placeholder/placeholder5.mp4">
+          <p>check out this awesome video</p>
+        </div>
+      </div>
+      <div class="swiper-slide">
+        <div class="image-container">
+          <img src="assets/slider_placeholder/6.jpg" alt="" data-video="assets/slider_placeholder/placeholder6.mp4">
+          <p>check out this awesome video</p>
+        </div>
+      </div>
+      <div class="swiper-slide">
+        <div class="image-container">
+          <img src="assets/slider_placeholder/7.jpg" alt="" data-video="assets/slider_placeholder/placeholder7.mp4">
+          <p>check out this awesome video</p>
+        </div>
+      </div>
+      <div class="swiper-slide">
+        <div class="image-container">
+          <img src="assets/slider_placeholder/8.jpg" alt="" data-video="assets/slider_placeholder/placeholder8.mp4">
+          <p>check out this awesome video</p>
+        </div>
+      </div>
+      <div class="swiper-slide">
+        <div class="image-container">
+          <img src="assets/slider_placeholder/9.jpg" alt="" data-video="assets/slider_placeholder/placeholder9.mp4">
+          <p>check out this awesome video</p>
+        </div>
+      </div>
+      <div class="swiper-slide">
+        <div class="image-container">
+          <img src="assets/slider_placeholder/10.jpg" alt="" data-video="assets/slider_placeholder/placeholder10.mp4">
+          <p>check out this awesome video</p>
+        </div>
+      </div>
+
+
+
+      <!-- Continue for other slides -->
+
+
+      <!-- 15 div -->
+
+    </div>
+  </div>
+
+
+
+  <!-- Swiper JS -->
+  <script src="swiper.js"></script>
+
+  <!-- Initialize Swiper -->
+  <script>
+    let intro = document.querySelector('.intro');
+    let intro_video = document.querySelector('#intro_DNA');
+
+    intro_video.onended = function() {
+    intro.style.transition = 'opacity 2s ease-out';
+    intro.style.opacity = '0';
+    setTimeout(() => {
+        intro.style.display = 'none';
+    }, 6000); // Ensure the element is not just invisible but removed from the flow
+};
+
+    var swiper = new Swiper(".mySwiper", {
+      effect: "coverflow",
+      grabCursor: true,
+      centeredSlides: true,
+      slidesPerView: "auto",
+      coverflowEffect: {
+        rotate: 15,
+        stretch: 0,
+        depth: 400,
+        modifier: 1,
+        slideShadows: true,
+      },
+      loop: true,
+    });
+    document.addEventListener('DOMContentLoaded', function () {
+      const images = document.querySelectorAll('.swiper-slide img'); // Select all images in swiper slides
+      images.forEach(image => {
+        image.addEventListener('click', function () {
+          const videoSrc = this.getAttribute('data-video');
+          const popup = document.createElement('div');
+          popup.style.position = 'fixed';
+          popup.style.left = '10vw';
+          popup.style.top = '10vh';
+          popup.style.width = '80vw';
+          popup.style.height = '50vw';
+          popup.style.display = 'flex';
+          popup.style.alignItems = 'center';
+          popup.style.justifyContent = 'center';
+          popup.style.backgroundColor = 'rgba(0,0,0,0.8)';
+          popup.style.zIndex = '1000'; // Ensures popup is on top of everything
+          popup.innerHTML = `
+            <div class="video-popup" style="width: 100%; height: 100%; position: relative; display: flex; align-items: center; justify-content: center;">
+                <video controls autoplay style="width: 100%; max-height: 100%;">
+                    <source src="${videoSrc}" type="video/mp4">
+                </video>
+                <button class="close-btn" style="position: absolute; top: 10px; right: 10px;">Close</button>
+            </div>
+        `;
+          document.body.appendChild(popup);
+
+          // Prevent click inside the video popup from closing it
+          popup.querySelector('.video-popup').addEventListener('click', function (event) {
+            event.stopPropagation(); // Stops the click from propagating to the container
+          });
+
+          // Close popup when clicking outside of video
+          popup.addEventListener('click', function (event) {
+            if (event.target === popup) {
+              popup.remove();
+            }
+          });
+
+          // Close button inside popup for better UX
+          popup.querySelector('.close-btn').addEventListener('click', function () {
+            popup.remove();
+          });
+        });
+      });
+    });
+  </script>
+</body>
+
+</html>
