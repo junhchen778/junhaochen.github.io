@@ -1,0 +1,1228 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+
+html {
+    width: 100%
+}
+
+body {
+    background-color: #ffffff;
+}
+
+body.creative {
+    background-color: #000000;
+}
+
+/* -------------------Splash Screen------------------- */
+
+.intro {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 1s ease-in-out;
+    z-index: 999;
+}
+
+.intro video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* ------------------- Header ------------------- */
+
+header nav {
+    display: flex;        /* Enables flexbox layout */
+    align-items: center;  /* Vertically centers the child elements */
+    justify-content: space-between; /* Spreads out the child elements */
+    box-sizing: border-box;
+    position: absolute;
+    padding: 3vw 10vw 3vw 10vw;
+    width: 100vw;
+    z-index: 1;
+    border-bottom: 0.05vw solid rgba(84, 84, 84, 0.765);
+}
+
+.right-content {
+    display: flex;
+    align-items: center; 
+    justify-content: flex-end; 
+    width: auto;
+}
+
+#dna_logo {
+    width: 15vw;
+    height: auto;
+}
+
+
+header nav ul {
+    display: flex;
+    list-style: none;
+    list-style-type: none;  /* Removes bullet points */
+    margin: 0;  /* Removes default margin */
+    text-decoration: none; /* Removes underlines from links */
+    align-items: center; /* Ensures that list items are also vertically centered */
+    
+}
+
+header nav ul li {
+    display: inline-block;
+    margin: 0 1.5rem;
+}
+
+header nav ul li a {
+    font-size: 1vw;
+    text-decoration: none;
+    color: rgb(134, 134, 134);
+    font-weight: 500;
+    position: relative; /* Add relative positioning here */
+    display: inline-block; /* Make sure this is inline-block or block */
+}
+
+body.creative header nav ul li a {
+    color: rgb(231, 231, 231);
+}
+
+header nav ul li a::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 0.2vw; /* Adjust the height as per your design */
+    border-radius: 1rem;
+    background-color: #06ff00; /* Green underline color */
+    visibility: hidden; /* Start as hidden */
+    transition: all 0.3s ease; /* Smooth transition for the animation */
+}
+
+header nav ul li a:hover::after {
+    width: 100%; /* Extend the underline across the element */
+    visibility: visible; /* Make the underline visible on hover */
+}
+
+#work_together_header {
+    background-color: rgb(0, 0, 0);
+    color: #ffffff;
+    border: none;
+    border-radius: 0.8rem;
+    padding: 1vw 1.5vw;
+    font-size: 0.8vw;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: inline-block; /* Ensures it does not break into multiple lines */
+    white-space: nowrap; /* Prevents wrapping of text */
+    overflow: hidden; /* Keeps all text inside the button's bounds */
+    text-overflow: ellipsis; /* Adds an ellipsis if the text is too long */
+}
+#work_together_header:hover {
+    background-color: rgb(255, 255, 255);
+    color: #04df01;
+    border: solid #000000;
+    }
+body.creative #work_together_header {
+    background-color: rgb(255, 255, 255);
+    color: #000000;
+}
+body.creative #work_together_header:hover {
+    background-color: rgb(0, 0, 0);
+    color: #04df01;
+    border: solid #ffffff;
+    }
+
+/* ------------------- Hamburger Menu ------------------- */
+.checkbtn {
+    font-size: 1rem;
+    margin-right: 0;
+    cursor: pointer;
+    display: none;
+}
+
+body.creative .checkbtn {
+    color: white;
+}
+#check {
+    display: none;
+}
+
+/*--------- toggle ----------*/
+.toggle-switch {
+    position: relative;
+    display: inline-block;
+    justify-self: center;
+    width: 4.1vw; /* Width of the toggle */
+    height: 2vw; /* Height of the toggle */
+    margin-right: 1.5rem;
+  }
+  
+  .toggle-switch input { 
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+  
+  .slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    transition: .4s;
+    border-radius: 50px; /* Rounded borders for a classic toggle look */
+  }
+  
+  .slider:before {
+    position: absolute;
+    content: "";
+    height: 1.5vw; /* Slightly smaller than the slider's height for padding */
+    width: 1.5vw; /* Make it circular */
+    left: 0.3vw;
+    bottom: 0.26vw;
+    background-color: white;
+    transition: .4s;
+    border-radius: 50%;
+  }
+  
+  input:checked + .slider {
+    background-color: #04df01;
+  }
+  
+  input:checked + .slider:before {
+    transform: translateX(2vw); /* Move the circle to the right on toggle */
+  }
+
+/* ------------------- Header Popup ------------------- */
+.info-popup {
+position: absolute;
+top: 3vw; /* Adjust based on actual layout */
+left: 50%;
+transform: translateX(-50%);
+background-color: #717171;
+color: white;
+padding: 1vw;
+border-radius: 5px;
+width: 10vw;
+font-size: 0.8vw;
+box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+display: none; /* Initially hidden */
+z-index: 10;
+}
+
+/* ------------------- Scroll Animation ------------------- */
+/* Initial states for animated elements */
+.animate-up, .animate-left, .animate-right {
+    opacity: 0;
+    transform: translateY(50px); /* Initial state for upward animation */
+}
+
+.animate-left {
+    transform: translateX(-100px); /* Initial state for leftward animation */
+}
+
+.animate-right {
+    transform: translateX(100px); /* Initial state for rightward animation */
+}
+
+/* Transition properties */
+.animate-up, .animate-left, .animate-right {
+    transition: transform 0.5s ease-out, opacity 0.5s ease-out;
+}
+
+/* Final states when elements are in view */
+.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+
+/* ------------------- Intro Page ------------------- */
+@keyframes slideInFromLeft {
+    0% {
+        transform: translateX(-30%);
+        opacity: 0;
+        visibility: hidden;
+    }
+    100% {
+        transform: translateX(0);
+        opacity: 1;
+        visibility: visible;
+    }
+}
+
+@keyframes slideInFromRight {
+    0% {
+        transform: translateX(30%);
+        opacity: 0;
+        visibility: hidden;
+    }
+    100% {
+        transform: translateX(0);
+        opacity: 1;
+        visibility: visible;
+    }
+}
+
+.title, .intro_video {
+    visibility: hidden; /* Elements are initially hidden */
+    animation-fill-mode: forwards; /* Ensures styles at the end of the animation persist */
+}
+
+.intro_page {
+    position: relative;
+    width: 100%;
+    background-color: white;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 18vw 15vw 10vw 12vw;
+}
+
+body.creative .intro_page {
+    background-color: black;
+}
+
+.title {
+    animation: slideInFromLeft 0.7s ease-out 5.5s forwards;
+    z-index: 10;
+    text-align: left;
+    width: 50%;
+    height: 100%;
+}
+
+.title h1 {
+    font-size: 2.5vw;
+    position: relative;  /* Required for absolute positioning of the pseudo-element */
+    display: inline-block;  /* Ensures the underline width matches the text width */
+    white-space: nowrap;  /* Prevents the text from wrapping */
+}
+
+body.creative .title h1 {
+   color: white; 
+}
+
+#sub_header_1 {
+    font-size: 1.2vw;
+    color:rgb(100, 100, 100);
+    margin-bottom: 2%;
+    font-weight: 400;
+}
+
+body.creative #sub_header_1 {
+    color:rgb(235, 235, 235);
+}
+
+#sub_header_2 {
+    font-size: 1.2vw;
+    color:rgb(100, 100, 100);
+    margin-top: 5%;
+    margin-bottom: 1%;
+    font-weight: 400;
+}
+
+body.creative #sub_header_2 {
+    color:rgb(235, 235, 235);
+}
+
+#portfolio_button {
+    background-color: rgb(0, 0, 0);
+    color: #ffffff;
+    text-decoration: none;
+    border: none;
+    float: left;
+    border-radius: 1vw;
+    padding: 5% 7%;
+    font-size: 1vw;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: block;
+    margin-top: 7%;
+    font-weight: bold;
+    }
+    #portfolio_button:hover {
+    background-color: rgb(255, 255, 255);
+    border: solid 1px black;
+    color:#04df01;
+    }
+
+body.creative #portfolio_button {
+    background-color: rgb(255, 255, 255);
+    text-decoration: none;
+    color: #000000;
+    }
+    body.creative #portfolio_button:hover {
+    background-color: rgb(0, 0, 0);
+    border: solid 1px rgb(255, 255, 255);
+    color:#04df01;
+    }
+
+#title_header:after {
+    content: '';
+    position: absolute;
+    left: 0;
+    border-radius: 1rem;
+    bottom: -0.5vw;  /* Adjust this as needed to position the underline */
+    width: 0;  /* Start with no underline visible */
+    height: 0.3vw;  /* Height of the underline */
+    background-color: #06ff00;  /* Color of the underline */
+    transition: width 3s ease-out;  /* Smooth transition for the animation */
+}
+
+/* Define the keyframes for the underline animation */
+@keyframes underline-animation {
+    from { width: 0; }
+    to { width: 100%; }
+}
+
+/* Trigger the animation with a delay */
+#title_header.animate-underline::after {
+    animation: underline-animation 0.5s forwards;
+    animation-delay: 4.7s;  /* Starts the animation after 5 seconds */
+}
+
+.intro_video {
+    animation: slideInFromRight 0.7s ease-out 5.7s forwards;
+    overflow: hidden;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 1vw;
+    width: 50%;
+}
+
+#mainVideo {
+    z-index: 0;
+    width: 100%;
+    transition: transform 0.3s ease-in-out;
+    margin: 0 auto;
+}
+
+.intro_video:hover #mainVideo {
+    transform: scale(1.05); /* Slightly scale up the video */
+}
+
+#playButton {
+    position: absolute;
+    top: 50%; /* Center vertically */
+    left: 50%; /* Center horizontally */
+    transform: translate(-50%, -50%); /* Adjust centering based on its size */
+    width: 10%; /* Original size */
+    transition: transform 0.3s ease-in-out; /* Smooth transition for transform */
+}
+
+/* Hover state styles for the play button */
+.intro_video:hover #playButton {
+    transform: translate(-50%, -50%) scale(0.8); /* Shrink and keep centered */
+}
+
+#popup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: #000000a8;
+    display: none;
+    width: 100vw;
+    height: 100vh;
+    z-index: 15;
+    justify-content: center;
+    align-items: center;
+}
+
+#popup video {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 80%;
+    transform: translate(-50%, -50%);
+}
+
+/* ------------------- Our Customer ------------------- */
+.our_customer {
+    position: relative; /* Keeps them in the normal document flow */
+    padding: 0 10vw 5vw 10vw;
+    background-color: #ffffff;
+}
+body.creative .our_customer {
+    background-color: #000000;
+}
+    .our_customer ul {
+        display: flex; /* This turns the ul into a flex container */
+        list-style: none; /* Removes default list styling */
+        justify-content: space-between;
+        flex-wrap: nowrap; /* Prevents the items from wrapping to the next line */
+    }
+
+    .our_customer li {
+        margin-right: 5%;
+    }
+
+    #customer_logo {
+        height: 5vw;
+        width: auto;
+    }
+
+/* ------------------- Process ------------------- */
+.process {
+    width: 100vw; /* set the width to 100% */
+    position: relative; /* set the position to relative */
+    padding: 5vw 10vw 5vw 10vw;
+    display: flex; /* Flex layout */
+    align-items: center; /* Align items vertically */
+    justify-content: space-between; /* Distributes space between and around content items */
+    background-color: #ececec;
+}
+body.creative .process {
+    background-color: #212121;
+}
+    .process_header {
+        font-size: 2vw;
+        display: flex;
+        justify-content: flex-end; /* Aligns header content to the start */
+        flex-direction: column; /* Stacks children vertically */
+        text-align: right;
+        align-items: end;
+    }
+    
+    .process_header_1 {
+        color: rgb(0, 0, 0);
+        font-size: 2vw;
+        margin-bottom: 1%;
+    }
+    body.creative .process_header_1 {
+        color: rgb(255, 255, 255);
+    }
+    .process_header_2 {
+        color: rgb(134, 134, 134);
+        font-size: 1.5vw;
+        font-weight: 400;
+        margin-bottom: 7%;
+    }
+    body.creative .process_header_2 {
+        color: rgb(255, 255, 255);
+    }
+    .process_intro_video {
+        overflow: hidden;
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 1vw;
+        width: 90%;
+        margin-right: 2%;
+    }
+    
+    #process_video {
+        z-index: 0;
+        width: 100%;
+        transition: transform 0.3s ease-in-out;
+        margin: 0 auto;
+    }
+    
+    .process_intro_video:hover #process_video {
+        transform: scale(1.05); /* Slightly scale up the video */
+    }
+        
+    /* Hover state styles for the play button */
+    .process_intro_video:hover #playButton {
+        transform: translate(-50%, -50%) scale(0.8); /* Shrink and keep centered */
+    }
+    
+    #process_popup {
+        position: fixed;
+        top: 0;
+        left: 0;
+        background-color: #000000a8;
+        display: none;
+        width: 100vw;
+        height: 100vh;
+        z-index: 15;
+        justify-content: center;
+        align-items: center;
+    }
+    
+    #process_popup video {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 80%;
+        transform: translate(-50%, -50%);
+    }
+    
+/* ------------------- Service ------------------- */
+.service {
+    width: 100vw; /* set the width to 100% */
+    position: relative; /* set the position to relative */
+    padding: 5vw 10vw 1vw 10vw;
+    display: flex; /* Flex layout */
+    flex-direction: column;
+    background-color: #ffffff;
+}
+body.creative .service {
+    background-color: #000000;
+}
+    .service_title {
+        font-size: 1.5vw;
+        width: 100%;
+        display: flex; /* enable flexbox layout */
+        justify-content: flex-start; /* center the header horizontally */
+        align-items: center; /* center the header vertically */
+        margin-bottom: 3vw;
+    }
+        .service_title_1 {
+            color:#000000;
+        }
+        body.creative .service_title_1 {
+            color:#ffffff;
+        }
+        .service_title_green_dot {
+            color: #04df01;
+        }
+    .service_container {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        perspective: 100vw;
+    }
+    .card {
+        display: flex;
+        position: relative;
+        height: 30vw;
+        width: 23vw;
+        justify-items: center;
+        align-items: center;
+        transition: transform 1000ms;
+        transform-style: preserve-3d;
+    }
+    /* Apply the hover effect directly to each card */
+    .card:hover {
+        cursor: pointer;
+        transform: rotateY(180deg);
+    }
+    .card_front,
+    .card_back {
+        position: absolute;
+        height: 100%;
+        width: 100%;
+        border-radius: 2.5vw;
+        box-shadow: 0 0 1vw 0.5vw rgba(198, 198, 198, 0.25);
+        backface-visibility: hidden;
+    }
+    body.creative .card_front,
+    .card_back {
+        box-shadow: 0 0 1vw 0.5vw rgba(198, 198, 198, 0.106);
+    }
+    .card_front {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        background-color: #ececec;
+        padding:  2vw 1.5vw 2vw 1.5vw;
+        gap: 1.5vw;
+    }
+    body.creative .card_front {
+        background-color: #212121;
+    }
+    .card_front img {
+        height: 20%
+    }
+    .card_front h1 {
+        font-size: 1.2vw;
+    }
+    body.creative .card_front h1 {
+        color: #ffffff;
+    }
+    .card_front p {
+        font-size: 1vw;
+        color: #818181;
+    }
+    body.creative .card_front p {
+        color: #c9c9c9;
+    }
+    #video_ad_button, #year_of_content_button {
+        padding: 5% 10% 5% 10%;
+        border-radius: 0.5vw;
+        border: none;
+        background-color: #04df01;
+        color: #ffffff;
+        font-weight: bold;
+        font-size: 1vw;
+    }
+    #ad_campaign_button {
+        padding: 5% 10% 5% 10%;
+        border-radius: 0.5vw;
+        border: none;
+        background-color: #000000;
+        color: #ffffff;
+        font-weight: bold;
+        font-size: 1vw;
+    }
+    .green_line {
+        width: 7vw;
+        height: 0.2vw;
+        background-color: #04df01;
+        border: none;
+    }
+    .black_line {
+        width: 7vw;
+        height: 0.2vw;
+        background-color: #000000;
+        border: none;
+    }
+    .card_back {
+        transform: rotateY(180deg);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 2vw;
+        background: linear-gradient(to bottom right, #ececec 80%, #04df01 80%);
+    }
+    body.creative .card_back {
+        background: linear-gradient(to bottom right, #212121 80%, #04df01 80%);
+    }
+    .card_back ul {
+        font-size: 1.2vw;
+        display: flex;
+        flex-direction: column;
+        gap: 1vw;
+        font-weight: 600;
+        color:rgb(108, 106, 106);
+    }
+    body.creative .card_back ul {
+        color:rgb(238, 238, 238);
+    }
+
+/* ------------------- Our Team ------------------- */
+.our_team {
+    width: 100vw;
+    padding: 5vw 10vw 0 10vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #ffffff;
+}
+body.creative .our_team {
+    background-color: #000000;
+}
+    .our_team .service_title {
+        justify-content: flex-end;
+    }
+    .team_container {
+        width: 100%;
+    }
+    .team_card {
+        width: 47%; /* Use 48% of the width to account for margins/padding */
+        float: left; /* Keeps elements in a line */
+        margin-right: 6%; /* Space between the cards, adjust accordingly */
+        margin-bottom: 6%; /* Spacing between rows */
+        background-color: #ececec;
+        border-radius: 1vw;
+        box-shadow: 0 0.5vw 1vw rgba(0,0,0,0.1);
+        text-align: center;
+    }
+    .team_card:nth-child(2n) {
+    margin-right: 0; /* Removes margin for every second card to fit perfectly */
+    }
+    body.creative .team_card {
+        background-color: rgb(108, 106, 106);;
+    }
+    .team_video {
+        overflow: hidden;
+        height: 30vw; /* Maintain the height as previously set */
+        border-top-left-radius: 1vw;
+        border-top-right-radius: 1vw;
+        display: flex; /* Use flexbox to center the content */
+        align-items: center; /* Center content vertically */
+        justify-content: center; /* Center content horizontally */
+        position: relative; /* Needed for absolute positioning inside */
+    }
+    
+    .team_card video {
+        width: auto; /* Auto width for maintaining aspect ratio */
+        min-width: 100%; /* Minimum width of 100% of parent */
+        height: 100%; /* Height as per the parent container */
+        position: absolute; /* Position absolutely to stay within the container */
+        top: 50%; /* Top 50% of the container */
+        left: 50%; /* Left 50% of the container */
+        transform: translate(-50%, -50%); /* Center the video */
+        object-fit: cover; /* Cover the area without losing aspect ratio */
+        transition: transform 0.5s ease;
+    }
+    .team_card:hover #team_gif {
+        transform: translate(-50%, -50%) scale(1.1); /* Scale up the video and keep it centered */
+    }  
+    .team_info {
+        padding: 1vw 1vw 1vw 1vw;
+    }
+    .team_card h2 {
+        position: relative;
+        display: inline-block; /* This makes the element's width only as wide as its content */
+        font-size: 1.5vw;
+        color: #333;
+        margin-bottom: 1vw; /* Adjust margins as necessary */
+        transition: color 0.3s ease; /* Smooth transition for text color if needed */
+    }
+    .team_card h2::after {
+        content: '';
+        position: absolute;
+        left: 0;
+        border-radius: 1vw;
+        bottom: -0.3vw; /* Adjust this as needed to position the underline */
+        width: 0; /* Start with no underline visible */
+        height: 0.2vw; /* Thickness of the underline */
+        background-color: #04df01; /* Green color for the underline */
+        transition: width 0.3s ease; /* Animation effect for expanding the underline */
+    }
+    .team_card:hover h2::after {
+        width: 100%; /* Extend the underline across the element on hover */
+    }
+    body.creative .team_card h2 {
+        color: #ffffff;
+    }
+    .team_card p {
+        font-size: 1vw;
+        color: #666;
+        padding: 0.5vw 0;
+        margin-bottom: 1.2vw;
+    }
+    body.creative .team_card p {
+        color: #ffffff;
+    }
+    .team_info a img {
+        width: 1.5vw;
+    }
+    body.creative .team_info a img {
+        background-color: #000000;
+        border-radius: 0.2vw;
+    }
+    
+/* ------------------- FAQ ------------------- */
+.faq {
+    width: 100vw; /* set the width to 100% */
+    position: relative; /* set the position to relative */
+    padding: 5vw 10vw 5vw 10vw;
+    background-color: #ffffff;
+}
+body.creative .faq {
+    background-color: #000000;
+}
+    .accordion-item {
+        margin-bottom: 1.5vw;
+    }
+    .accordion-button {
+        background-color: #ececec;
+        color: rgb(0, 0, 0);
+        cursor: pointer;
+        padding: 2.5vw;
+        width: 100%;
+        border: none;
+        text-align: left;
+        outline: none;
+        font-size: 1.5vw;
+        font-weight: 200;
+        transition: background-color 0.4s ease;
+        border-radius: 1vw;
+    }
+    body.creative .accordion-button {
+        background-color: #212121;
+        color: white;
+    }
+    .accordion-button:hover {
+        background-color: #04df01;
+    }
+    body.creative .accordion-button:hover {
+        background-color: #04df01;
+    }
+    .accordion-content {
+        background-color: white;
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.1s ease-out;
+        padding: 0 5%;
+    }
+    body.creative .accordion-content {
+        background-color: black;
+    }
+    .accordion-content p {
+        padding: 0;  /* Start with no padding */
+        margin: 0;
+        font-size: 1.5vw;
+        color: #333;
+        transition: padding 0.1s ease-out;
+    }
+    body.creative .accordion-content p {
+        color: #c8c8c8;
+    }
+
+/* ------------------- Footer ------------------- */
+.work_together {
+    width: 100vw; /* set the width to 100% */
+    position: relative; /* set the position to relative */
+    padding: 5% 10vw 5% 10vw;
+    border-top: 0.05vw solid rgba(84, 84, 84, 0.765);
+    background-color: #ffffff;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    } 
+body.creative .work_together {
+    background-color: #000000;
+}
+    .mission {
+        width: 30%;
+    }
+    .mission p {
+        color:#818181; 
+        font-size: 1vw;
+    }
+    .work_together_header {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end; /* Aligns items to the right */
+        width: 70%; /* Ensures the container takes full width */
+        gap: 2vw;
+        margin-top: 0;
+        margin-bottom: 2vw;
+        }
+
+        .work_together_title {
+            display: flex;
+            justify-content: center;
+        }
+        
+        .work_together_header_1 {
+            color: rgb(0, 0, 0); 
+            padding: 0;
+            font-size: 3vw;
+        }
+        body.creative .work_together_header_1 {
+            color: rgb(255, 255, 255); 
+        }
+        .work_together_header_2 {
+        color: #06ff00; /* set the text color to green */
+        font-size: 3vw;
+        }
+        .footer_button {
+            justify-content: flex-end; /* Ensures the button is aligned to the right */
+        } 
+        .social_media {
+            justify-content: flex-end; /* Aligns social media icons to the right */
+        }
+        .social_media ul {
+            padding: 0; /* Removes padding that might affect alignment */
+            margin: 0; /* Ensures list is flush to the right side */
+            list-style: none;
+            display: flex;
+        }
+        .social_media ul li {
+            padding-left: 1vw; /* Adds some space between icons */
+        }
+        .social_media ul li img {
+            width: 2vw;
+        }
+        
+        
+.footer {
+    padding:  0 10vw 2% 10vw;
+}
+body.creative .footer {
+    background-color: #000000;
+}
+    #dna_logo_footer {
+        width: 15vw;
+        height: auto;
+    }
+    .footer p {
+        color: rgb(97, 97, 97);
+        font-size: 1vw;
+    }
+
+/* ---------------------------------------------------------------- */
+/* ---------------------------------------------------------------- */
+/* ------------------- Mobile Screen Adjustment ------------------- */
+/* ---------------------------------------------------------------- */
+/* ---------------------------------------------------------------- */
+@media (max-width: 600px) {
+    body, html {
+        max-width: 100vw;
+        overflow-x: hidden; /* Prevent horizontal scrolling */
+    }
+
+    /* ----------- Splash Screen ----------- */
+    .intro {
+        z-index: 9999; /* Increased z-index */
+    }
+
+    /* ----------- Header ----------- */
+    header nav {
+        padding: 5vw 10vw 5vw 10vw;
+    }
+    #dna_logo {
+        width: 45vw;
+    }
+    .checkbtn {
+        display: block;
+        font-size: 1.4rem;
+        margin-right: 3vw;
+    }
+    #check:checked ~ ul {
+        right: 0;
+    }
+    header nav {
+        position: relative; /* Ensures it creates a stacking context */
+        z-index: 12; /* Higher z-index to ensure it's above other content */
+    }
+    header nav ul {
+        position: fixed;
+        width: 40%;
+        height: 30vh;
+        background-color: #ececec;
+        top: 20.5vw;
+        right: -100%;
+        flex-direction: column; 
+        align-items: center; /* Center items horizontally */
+        transition: all .5s;
+        opacity: 0.9;
+    }
+    body.creative header nav ul {
+        background-color: #212121;
+    }
+    header nav ul li {
+        display: block;
+        margin-top: 10%;
+        max-width: 100%;
+    }
+    header nav ul li a {
+        font-size: 3vw;
+        width: 100%;
+        text-align: center;
+        color: rgb(54, 54, 54);
+    }
+    header nav ul li a::after {
+        height: 0.5vw; /* Adjust the height as per your design */
+    }
+    #work_together_header {
+        border-radius: 1vw;
+        padding: 1vw 2vw;
+        font-size: 3vw;
+        font-weight: 600;
+    }
+
+    /* ----------- Toggle ----------- */
+    .toggle-switch {
+        width: 10vw; /* Width of the toggle */
+        height: 6vw; /* Height of the toggle */
+        margin-right: 0;
+    }
+    .slider:before {
+        height: 5.2vw; /* Slightly smaller than the slider's height for padding */
+        width: 5.2vw; /* Make it circular */
+        left: 0.4vw;
+        bottom: 0.4vw;
+    }
+    input:checked + .slider:before {
+        transform: translateX(3.9vw); /* Move the circle to the right on toggle */
+    }
+
+    /* ----------- Header Popup ----------- */
+    .info-popup {
+        top: 7vw; /* Adjust based on actual layout */
+        padding: 1.2vw;
+        width: 25vw;
+        font-size: 2vw;
+        }
+
+    /* ----------- Intro Page ----------- */
+    .intro_page {
+        padding: 10vw 10vw 10vw 10vw;
+        flex-direction: column;
+        position: relative; 
+        width: 100%;
+    }
+        .title {
+            z-index: 10;
+            text-align: left;
+            width: 100%;
+            height: 100%;
+            margin-bottom: 10vw;
+        }
+        .title h1 {
+            font-size: 6vw;
+        }
+        #sub_header_1 {
+            font-size: 3vw;
+            margin-bottom: 3%;
+            font-weight: 400;
+        }
+        #sub_header_2 {
+            font-size: 3vw;
+            margin-top: 7%;
+            margin-bottom: 1%;
+            font-weight: 400;
+        }
+        #portfolio_button {
+            border-radius: 1.5vw;
+            font-size: 3vw;
+        }
+        .intro_video {
+            border-radius: 1.5vw;
+            width: 90%;
+            align-self: flex-end;
+        }
+    
+    /* ----------- Our Customer ----------- */
+    .our_customer {
+        padding: 0 10vw 7vw 10vw;
+    }
+    #customer_logo {
+        height: 10vw;
+        width: auto;
+    }
+
+    /* ----------- Process ----------- */
+    .process {
+        padding: 10vw 10vw 10vw 10vw;
+        flex-direction: column;
+    }
+        .process_intro_video {
+            border-radius: 1.5vw;
+            width: 85%;
+            align-self: flex-start;
+            margin-bottom: 7vw;
+        }
+        .process_header {
+            align-self: flex-end;
+        }
+        .process_header_1 {
+            font-size: 5vw;
+            margin-bottom: 1.5vw;
+        }
+        .process_header_2 {
+            font-size: 3vw;
+            font-weight: 400;
+        }
+
+    /* ----------- Service ----------- */
+    .service {
+        padding: 10vw 10vw 5vw 10vw;
+    }
+        .service_title {
+            font-size: 3vw;
+            margin-bottom: 3vw;
+        }
+        .service_container {
+            flex-direction: column;
+            perspective: 500vw;
+        }
+        .card {
+            height: 65vw;
+            width: 50vw;
+            margin-bottom: 2.5vw;
+        }
+        .card_front {
+            padding:  2vw 1.5vw 2vw 1.5vw;
+            gap: 2vw;
+        }
+        .card_front img {
+            height: 30%
+        }
+        .card_front h1 {
+            font-size: 3vw;
+        }
+        .card_front p {
+            font-size: 2vw;
+            color: #818181;
+        }
+        #video_ad_button, #year_of_content_button {
+            border-radius: 1vw;
+            font-size: 2vw;
+        }
+        #ad_campaign_button {
+            border-radius: 1vw;
+            font-size: 2vw;
+        }
+        .green_line {
+            width: 18vw;
+            height: 0.5vw;
+        }
+        .black_line {
+            width: 18vw;
+            height: 0.5vw;
+        }
+        .card_back ul {
+            font-size: 3vw;
+        }
+
+        /* ----------- Team ----------- */
+        .team_card {
+            width: 46%; /* Use 48% of the width to account for margins/padding */
+            margin-right: 6%; /* Space between the cards, adjust accordingly */
+        }
+        .team_info h2 {
+            font-size: 3vw;
+        }
+        .team_card h2::after {
+            bottom: -0.4vw; /* Adjust this as needed to position the underline */
+            height: 0.5vw; /* Thickness of the underline */
+        }
+        .team_card p {
+            font-size: 2vw;
+            margin-top: 2%;
+            margin-bottom: 0;
+        }
+        .team_info a img {
+            width: 2.5vw;
+        }
+
+        /* ----------- FAQ ----------- */
+        .faq {
+            padding: 10vw
+        }
+        .accordion-button {
+            font-size: 3vw;
+        }
+        .accordion-content p {
+            font-size: 2.5vw;
+        }
+
+        /* ----------- Footer ----------- */
+        #dna_logo_footer{
+            width: 25vw;
+        }
+        .mission {
+            width: 45%;
+        }
+        .mission p {
+            font-size: 1.5vw;
+        }
+        .work_together_header_1, .work_together_header_2{
+            font-size: 4vw;
+        }
+        .social_media ul li img {
+            width: 4vw;
+        }
+        .footer p {
+            font-size: 1.5vw;
+        }
+}
